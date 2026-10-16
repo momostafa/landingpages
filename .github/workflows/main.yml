@@ -1,7 +1,7 @@
 name: CI/CD & Initial Release
 
 on:
-  push:
+pushed:
     branches: [ "main" ]
     tags: [ "v*" ]
   pull_request:
@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ "8.2", "8.3" ]
+        php: [ "8.4" ]
 
     name: PHP ${{ matrix.php }} - Build & Test
 
@@ -80,7 +80,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: "8.4"
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite3, pdo_sqlite
 
       - name: Install Dependencies
@@ -99,7 +99,6 @@ jobs:
       - name: Create Release Archive
         run: |
           mkdir -p dist
-          # Create a clean zip archive of the project for the release asset, ignoring git and dev files
           zip -r dist/landingpages-${{ github.ref_name }}.zip . -x "*.git*" "node_modules/*" "tests/*" ".github/*"
 
       - name: Create GitHub Release
