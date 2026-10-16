@@ -1,22 +1,32 @@
 {
+    "repositories": [
+      ],
     "$schema": "https://getcomposer.org/schema.json",
     "name": "laravel/livewire-starter-kit",
     "type": "project",
     "description": "The official Laravel starter kit for Livewire.",
-    "keywords": [
-        "laravel",
-        "framework"
-    ],
+    "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "blade-ui-kit/blade-heroicons": "^2.6",
+        "blade-ui-kit/blade-icons": "^1.8",
+        "codeat3/blade-devicons": "^1.9",
+        "codeat3/blade-google-material-design-icons": "^1.20",
+        "codeat3/blade-unicons": "^1.9",
+        "filament/filament": "^4.0",
+        "guava/filament-icon-picker": "^3.1",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",
-        "livewire/volt": "^1.7.0"
+        "livewire/volt": "^1.7.0",
+        "mokhosh/filament-rating": "^2.0",
+        "z3d0x/filament-fabricator": "^2.6"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.16",
         "fakerphp/faker": "^1.23",
+        "filament/upgrade": "^4.0",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.18",
         "laravel/sail": "^1.41",
@@ -40,7 +50,8 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
+            "@php artisan package:discover --ansi",
+            "@php artisan filament:upgrade"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
@@ -76,6 +87,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

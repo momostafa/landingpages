@@ -1,10 +1,22 @@
 @import 'tailwindcss';
 @import '../../vendor/livewire/flux/dist/flux.css';
+@import '../../vendor/filament/filament/resources/css/theme.css';
 
+
+@source '../**/*.blade.php';
+@source '../**/*.js';
 @source '../views';
+@source '../../app/Filament';
+@source '../../resources/views/filament';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
 @source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+@source '../../vendor/livewire/**/*.blade.php';
+@source '../../vendor/filament/forms/stubs/**/*.blade.php';
+@source '../../vendor/filament/forms/stubs/components/**/*.blade.php';
+
+@plugin "daisyui";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

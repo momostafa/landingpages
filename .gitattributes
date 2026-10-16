@@ -6,5 +6,7 @@
 *.md diff=markdown
 *.php diff=php
 
+/database/database.sqlite export-ignore
+/.env export-ignore
 CHANGELOG.md export-ignore
 README.md export-ignore

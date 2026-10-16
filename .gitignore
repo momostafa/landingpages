@@ -9,6 +9,8 @@
 .env
 .env.backup
 .env.production
+.env.local
+.env.*.local
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
@@ -21,3 +23,23 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+# SpecStory explanation file
+.specstory/.what-is-this.md
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+# Debugbar
+storage/debugbar/*
+!storage/debugbar/.gitignore
+ReadmeOverview.md
