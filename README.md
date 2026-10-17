@@ -18,8 +18,8 @@ A curated visual overview of the LandingPages project. The repository includes f
 
 <table>
   <tr>
-    <td align="center"><b>Play Template (Light)</b></td>
-    <td align="center"><b>Play Template (Dark)</b></td>
+    <td align="center" style="padding: 0;"><b>Play Template (Light)</b></td>
+    <td align="center" style="padding: 0;"><b>Play Template (Dark)</b></td>
   </tr>
   <tr>
     <td><img src="showcase/play-light-hero.png" alt="Play Light" width="100%" border="0"/></td>
@@ -29,8 +29,8 @@ A curated visual overview of the LandingPages project. The repository includes f
 
 <table>
   <tr>
-    <td align="center"><b>Folio Template (Light)</b></td>
-    <td align="center"><b>Folio Template (Dark)</b></td>
+    <td align="center" style="padding: 0;"><b>Folio Template (Light)</b></td>
+    <td align="center" style="padding: 0;"><b>Folio Template (Dark)</b></td>
   </tr>
   <tr>
     <td><img src="showcase/folio-light-hero.png" alt="Folio Light" width="100%" border="0"/></td>
@@ -40,8 +40,8 @@ A curated visual overview of the LandingPages project. The repository includes f
 
 <table>
   <tr>
-    <td align="center"><b>Page Editor (Overview)</b></td>
-    <td align="center"><b>Page Editor (Sections)</b></td>
+    <td align="center" style="padding: 0;"><b>Page Editor (Overview)</b></td>
+    <td align="center" style="padding: 0;"><b>Page Editor (Sections)</b></td>
   </tr>
   <tr>
     <td><img src="showcase/Edit-Page-editor-overview.png" alt="Editor Overview" width="100%" border="0"/></td>
