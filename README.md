@@ -16,36 +16,36 @@ A curated visual overview of the LandingPages project. The repository includes f
 
 ## Featured screens
 
-<table>
-  <tr>
+<table style="border: none;">
+  <tr style="border: none;">
     <td align="center" style="padding: 0;"><b>Play Template (Light)</b></td>
     <td align="center" style="padding: 0;"><b>Play Template (Dark)</b></td>
   </tr>
-  <tr>
-    <td><img src="showcase/play-light-hero.png" alt="Play Light" width="100%" border="0"/></td>
-    <td><img src="showcase/play-dark-footer.png" alt="Play Dark" width="100%" border="0"/></td>
+  <tr style="border: none;">
+    <td><img src="showcase/play-light-hero.png" alt="Play Light" width="100%"/></td>
+    <td><img src="showcase/play-dark-footer.png" alt="Play Dark" width="100%"/></td>
   </tr>
 </table>
 
-<table>
-  <tr>
+<table style="border: none;">
+  <tr style="border: none;">
     <td align="center" style="padding: 0;"><b>Folio Template (Light)</b></td>
     <td align="center" style="padding: 0;"><b>Folio Template (Dark)</b></td>
   </tr>
-  <tr>
-    <td><img src="showcase/folio-light-hero.png" alt="Folio Light" width="100%" border="0"/></td>
-    <td><img src="showcase/folio-dark-projects.png" alt="Folio Dark" width="100%" border="0"/></td>
+  <tr style="border: none;">
+    <td><img src="showcase/folio-light-hero.png" alt="Folio Light" width="100%"/></td>
+    <td><img src="showcase/folio-dark-projects.png" alt="Folio Dark" width="100%"/></td>
   </tr>
 </table>
 
-<table>
-  <tr>
+<table style="border: none;">
+  <tr style="border: none;">
     <td align="center" style="padding: 0;"><b>Page Editor (Overview)</b></td>
     <td align="center" style="padding: 0;"><b>Page Editor (Sections)</b></td>
   </tr>
-  <tr>
-    <td><img src="showcase/Edit-Page-editor-overview.png" alt="Editor Overview" width="100%" border="0"/></td>
-    <td><img src="showcase/Edit-Page-editor-sections.png" alt="Editor Sections" width="100%" border="0"/></td>
+  <tr style="border: none;">
+    <td><img src="showcase/Edit-Page-editor-overview.png" alt="Editor Overview" width="100%"/></td>
+    <td><img src="showcase/Edit-Page-editor-sections.png" alt="Editor Sections" width="100%"/></td>
   </tr>
 </table>
 
