@@ -10,27 +10,44 @@ Dynamic landing page builder with Filament Fabricator - SaaS-ready starter kit
 
 A curated visual overview of the LandingPages project. The repository includes full-page screenshots, focused section crops, and a hero composition for easy previewing.
 
-![LandingPages hero art](/showcase/landingpages-hero-art.png)
+<p align="center">
+  <img src="showcase/landingpages-hero-art.png" alt="LandingPages Hero Art" width="85%"/>
+</p>
 
 ## Featured screens
 
-### Play
+<table>
+  <tr>
+    <td align="center"><b>Play Template (Light)</b></td>
+    <td align="center"><b>Play Template (Dark)</b></td>
+  </tr>
+  <tr>
+    <td><img src="showcase/play-light-hero.png" alt="Play Light" width="100%"/></td>
+    <td><img src="showcase/play-dark-footer.png" alt="Play Dark" width="100%"/></td>
+  </tr>
+</table>
 
-| Light | Dark |
-| --- | --- |
-| ![Play light](/showcase/play-light-hero.png) | ![Play dark](/showcase/play-dark-footer.png) |
+<table>
+  <tr>
+    <td align="center"><b>Folio Template (Light)</b></td>
+    <td align="center"><b>Folio Template (Dark)</b></td>
+  </tr>
+  <tr>
+    <td><img src="showcase/folio-light-hero.png" alt="Folio Light" width="100%"/></td>
+    <td><img src="showcase/folio-dark-projects.png" alt="Folio Dark" width="100%"/></td>
+  </tr>
+</table>
 
-### Folio
-
-| Light | Dark |
-| --- | --- |
-| ![Folio light](/showcase/folio-light-hero.png) | ![Folio dark](/showcase/folio-dark-projects.png) |
-
-### Page Editor
-
-| Overview | About |
-| --- | --- |
-| ![Editor Overview](/showcase/Edit-Page-editor-overview.png) | ![Editor Sections](/showcase/Edit-Page-editor-sections.png) |
+<table>
+  <tr>
+    <td align="center"><b>Page Editor (Overview)</b></td>
+    <td align="center"><b>Page Editor (Sections)</b></td>
+  </tr>
+  <tr>
+    <td><img src="showcase/Edit-Page-editor-overview.png" alt="Editor Overview" width="100%"/></td>
+    <td><img src="showcase/Edit-Page-editor-sections.png" alt="Editor Sections" width="100%"/></td>
+  </tr>
+</table>
 
 ## ⚠️ Important Notes
 
