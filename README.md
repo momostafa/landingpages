@@ -10,9 +10,7 @@ Dynamic landing page builder with Filament Fabricator - SaaS-ready starter kit
 
 A curated visual overview of the LandingPages project. The repository includes full-page screenshots, focused section crops, and a hero composition for easy previewing.
 
-## Hero Art
-
-![LandingPages hero art](/showcase/landingpages-hero-art1.png)
+![LandingPages hero art](/showcase/landingpages-hero-art.png)
 
 ## Featured screens
 
