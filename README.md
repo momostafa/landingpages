@@ -6,6 +6,34 @@ Dynamic landing page builder with Filament Fabricator - SaaS-ready starter kit
 [![Filament](https://img.shields.io/badge/Filament-4.x-orange.svg)](https://filamentphp.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+## LandingPages Visual Showcase
+
+A curated visual overview of the LandingPages project. The repository includes full-page screenshots, focused section crops, and a hero composition for easy previewing.
+
+## Hero Art
+
+![LandingPages hero art](/showcase/landingpages-hero-art1.png)
+
+## Featured screens
+
+### Play
+
+| Light | Dark |
+| --- | --- |
+| ![Play light](/showcase/play-light-hero.png) | ![Play dark](/showcase/play-dark-footer.png) |
+
+### Folio
+
+| Light | Dark |
+| --- | --- |
+| ![Folio light](/showcase/folio-light-hero.png) | ![Folio dark](/showcase/folio-dark-projects.png) |
+
+### Page Editor
+
+| Overview | About |
+| --- | --- |
+| ![Editor Overview](/showcase/Edit-Page-editor-overview.png) | ![Editor Sections](/showcase/Edit-Page-editor-sections.png) |
+
 ## ⚠️ Important Notes
 
 ### Filament Fabricator Dependency
