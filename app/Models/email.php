@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class email extends Model
+class Email extends Model
 {
     protected $table = 'emails';
 
@@ -17,7 +17,7 @@ class email extends Model
         'last_name',
         'email',
         'phone',
-        'subject', 
+        'subject',
         'message',
         'auto_responder_sent',
         'status',
