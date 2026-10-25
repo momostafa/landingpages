@@ -60,7 +60,8 @@ A curated visual overview of the LandingPages project. The repository includes f
 
 ## 🆕 New Features
 
-### v1.1.0 (Latest)
+### [![GitHub Release](https://img.shields.io/github/v/release/momostafa/landingpages)](https://github.com/momostafa/landingpages/releases/latest)
+
 
 - **RTL Support**: Play template now supports Right-to-Left languages with Arabic sample content
 - **Multi-Language**: Built-in language switcher and translation support for page blocks
