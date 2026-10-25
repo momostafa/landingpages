@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
+        "astrotomic/laravel-translatable": "^11.17",
         "blade-ui-kit/blade-heroicons": "^2.6",
         "blade-ui-kit/blade-icons": "^1.8",
         "codeat3/blade-devicons": "^1.9",
@@ -16,6 +17,7 @@
         "codeat3/blade-unicons": "^1.9",
         "filament/filament": "^4.0",
         "guava/filament-icon-picker": "^3.1",
+        "happenv-com/filament-translatable": "^5.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "livewire/flux": "^2.1.1",

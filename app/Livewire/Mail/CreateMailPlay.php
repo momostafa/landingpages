@@ -6,45 +6,57 @@ use App\Models\Email;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Log;
-use Livewire\Component;
-use Livewire\Attributes\Reactive;
 use Livewire\Attributes\On;
-
+use Livewire\Attributes\Reactive;
+use Livewire\Component;
 
 class CreateMailPlay extends Component
 {
-
     public Email $emailmodel;
+
     public ?array $data = [];
-    public? string $first_name;
-    public? string $last_name;
-    public? string $email;
-    public? string $phone;
-    public? string $subject;
-    public? string $message;
-    public? string $success_message;
-    public? string $error_message;
-    public? string $status = null;
+
+    public ?string $first_name;
+
+    public ?string $last_name;
+
+    public ?string $email;
+
+    public ?string $phone;
+
+    public ?string $subject;
+
+    public ?string $message;
+
+    public ?string $success_message;
+
+    public ?string $error_message;
+
+    public ?string $status = null;
+
     public bool $auto_responder_sent = false;
-    public? string $page_slug;
+
+    public ?string $page_slug;
 
     #[Reactive]
-    public? int $page_id;
+    public ?int $page_id;
 
     #[Reactive]
-    public? string $page_layout;
+    public ?string $page_layout;
 
     #[Reactive]
-    public? int $user_id;
+    public ?int $user_id;
 
     #[Reactive]
-    public? string $source;
+    public ?string $source;
 
     #[Reactive]
-    public? string $direction;
+    public ?string $direction;
 
     public mixed $record;
+
     public ?string $notification = null;
+
     public ?string $notificationType = null;
 
     public function mount($page_slug = null, $page_id = null, $page_layout = null, $user_id = null, $source = null, $direction = null): void
@@ -74,7 +86,7 @@ class CreateMailPlay extends Component
     {
         $this->create();
     }
-    
+
     public function create(): void
     {
         $this->validate([
@@ -84,8 +96,7 @@ class CreateMailPlay extends Component
             'message' => 'required|string|max:1200',
         ]);
 
-
-        if($this->source == 'contact_form'){
+        if ($this->source == 'contact_form') {
             $this->direction = 'inbound';
             $this->status = 'pending';
             $this->source = 'contact_form';

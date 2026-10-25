@@ -30,7 +30,7 @@
         if (ud_header.classList.contains("sticky")) {
           document.querySelector(".header-logo").src =
             "templates/play/assets/images/logo/logo-white.svg"
-        } 
+        }
       }
     }
 
@@ -155,4 +155,6 @@
   // invoke theme check on initial load
   themeCheck();
   /* ========  themeSwitcher End ========= */
+
+
 })();

@@ -2,18 +2,17 @@
 
 namespace App\Filament\Resources\PageResource\Pages;
 
-//use Filament\Pages\Actions;
-//use Filament\Pages\Actions\Action;
+// use Filament\Pages\Actions;
+// use Filament\Pages\Actions\Action;
+use App\Filament\Resources\PageResource;
 use App\Filament\Resources\PageResource\Pages\Concerns\HasPreviewModal;
-use Filament\Actions\ViewAction;
-use Filament\Actions\DeleteAction;
-use Filament\Actions;
 use Filament\Actions\Action;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
-use App\Filament\Resources\PageResource;
 
 class EditPage extends EditRecord
 {

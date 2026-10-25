@@ -1,10 +1,43 @@
 @aware(['page'])
 @props(['about'])
 @php
+    use Illuminate\Support\Str;
+
+    // 1. Determine target suffix (e.g., ":ar" or ":en")
+    $currentLang = request()->query('lang') === 'ar' ? 'ar' : 'en';
+    $suffix = ":{$currentLang}";
+
+    // 2. Build the "Normalized" navbar array
+    $about = collect($about)->mapWithKeys(function ($value, $key) use ($suffix) {
+        // If the key ends with our target language (e.g., "signin_text:ar")
+        if (Str::endsWith($key, $suffix)) {
+            // Return the stripped key (e.g., "signin_text") with the current value
+            return [Str::before($key, ':') => $value];
+        }
+
+        // If it's a key that doesn't have a language suffix at all (e.g., "logo_dark")
+        // OR if it's a suffix for the OTHER language, we only keep it if it has no suffix.
+        if (!Str::contains($key, ':')) {
+            return [$key => $value];
+        }
+
+        // Otherwise, ignore keys belonging to the other language
+        return [];
+    })->toArray();
+
     // Handle both old and new field names for backward compatibility
     $image1 = $about['image_1'] ?? $about['background_image'] ?? 'templates/play/assets/images/about/about-image-01.jpg';
     $image2 = $about['image_2'] ?? 'templates/play/assets/images/about/about-image-02.jpg';
-    $experienceYears = $about['experience_years'] ?? '09';
+    $experienceYears = $about['experience_years'] ?? '10';
+    if($currentLang == 'en'){
+    $wehave = "We have";
+    $yearsofexperince = "Years of experience";
+    }else{
+    $wehave = "لدينا";
+    $yearsofexperince = "سنوات من الخبرة";
+    }
+
+
 @endphp
 @if($about['is_active'])
 {{-- <!-- About Section Start --> --}}
@@ -42,14 +75,14 @@
 
                             <div class="relative z-10 mb-4 flex items-center justify-center overflow-hidden bg-primary px-6 py-12 sm:mb-8 sm:h-[160px] sm:p-5 lg:mb-4 xl:mb-8">
                                 <div>
+                                    <span class="block text-base font-semibold text-white">
+                                        {{ $wehave }}
+                                    </span>
                                     <span class="block text-5xl font-extrabold text-white">
                                         {{ $experienceYears }}
                                     </span>
-                                    <span class="block text-base font-semibold text-white">
-                                        We have
-                                    </span>
                                     <span class="block text-base font-medium text-white text-opacity-70">
-                                        Years of experience
+                                        {{ $yearsofexperince }}
                                     </span>
                                 </div>
                                 <div>

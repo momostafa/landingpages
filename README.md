@@ -5,13 +5,22 @@ Dynamic landing page builder with Filament Fabricator - SaaS-ready starter kit
 [![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![Filament](https://img.shields.io/badge/Filament-4.x-orange.svg)](https://filamentphp.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/momostafa/landingpages?style=social)](https://github.com/momostafa/landingpages/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/momostafa/landingpages?style=social)](https://github.com/momostafa/landingpages/network/members)
+[![GitHub Downloads](https://img.shields.io/github/downloads/momostafa/landingpages/total?label=Downloads)](https://github.com/momostafa/landingpages/releases)
 
 ## LandingPages Visual Showcase
 
 A curated visual overview of the LandingPages project. The repository includes full-page screenshots, focused section crops, and a hero composition for easy previewing.
 
 <p align="center">
-  <img src="showcase/landingpages-hero-art.png" alt="LandingPages Hero Art" width="85%"/>
+  <img src="showcase/landingpages-hero-art-1.png" alt="LandingPages Hero Art" width="100%"/>
+</p>
+
+## Base Templates
+
+<p align="center">
+  <img src="showcase/landingpages-hero-art-2.png" alt="LandingPages Base Templates" width="100%"/>
 </p>
 
 ## Featured screens
@@ -49,6 +58,15 @@ A curated visual overview of the LandingPages project. The repository includes f
   </tr>
 </table>
 
+## 🆕 New Features
+
+### v1.1.0 (Latest)
+
+- **RTL Support**: Play template now supports Right-to-Left languages with Arabic sample content
+- **Multi-Language**: Built-in language switcher and translation support for page blocks
+- **Email Management**: Dedicated Filament Resource to view contact form submissions
+- **Translation Packages**: Integrated laravel-translatable and filament-translatable
+
 ## ⚠️ Important Notes
 
 ### Filament Fabricator Dependency
@@ -64,6 +82,7 @@ A curated visual overview of the LandingPages project. The repository includes f
 ### Multi-User Architecture
 
 The Page model includes a `user_id` field, making the application SaaS-ready from day one. This allows:
+
 - Each user to manage their own pages
 - Future multi-tenancy support
 - User-specific page permissions
@@ -78,6 +97,9 @@ The Page model includes a `user_id` field, making the application SaaS-ready fro
 - **Filament Admin Panel** - Full admin interface for managing pages and content
 - **Responsive Design** - All templates are fully responsive and mobile-friendly
 - **Dark Mode Support** - Built-in dark mode switching
+- **RTL Support** - Play template supports Right-to-Left languages with Arabic sample content
+- **Multi-Language Support** - Built-in language switcher and translation support for page blocks
+- **Email Management** - Dedicated Filament Resource to view contact form submissions
 - **Livewire Integration** - Fast, reactive UI components
 - **Tailwind CSS 4** - Utility-first CSS framework for rapid styling
 - **SQLite by Default** - Quick setup with included demo database
@@ -87,6 +109,11 @@ The Page model includes a `user_id` field, making the application SaaS-ready fro
 ### Play Template
 
 Modern multi-purpose landing page template based on [Play Tailwind](https://tailgrids.com/free-templates/play-tailwind/) (MIT License). Includes hero, services, pricing, team, and testimonial sections.
+
+**Additional Features:**
+- RTL support for Right-to-Left languages
+- Multi-language support with built-in language switcher
+- Arabic sample content included
 
 ### Folio Template
 
@@ -198,6 +225,68 @@ The backend classes map directly to Blade components in:
 
 - Corresponding blade files for the Page Blocks
 
+## 🌍 Multi-Language Support
+
+### Overview
+
+LandingPages supports multi-language content for page blocks using the `laravel-translatable` and `filament-translatable` packages. The Play template includes RTL support and Arabic sample content by default.
+
+### Adding Translations to Page Blocks
+
+To make a page block translatable, use the `Translations` component from `happenv-com/filament-translatable`:
+
+```php
+// app/Filament/Fabricator/PageBlocks/Play/Navbar.php
+use Happenv\FilamentTranslatable\Forms\Component\Translations;
+
+class Navbar extends PageBlock
+{
+    public static function getBlockSchema(): Block
+    {
+        return Block::make('play.navbar')
+            ->label('Navigation Bar')
+            ->visible(fn (Get $get) => $get('../layout') == 'play')
+            ->icon('heroicon-o-user')
+        ->schema([
+            Translations::make('translations')
+                ->prefixLocaleLabel()
+                ->contained(false)
+                ->exclude([
+                    'navbar.is_active',
+                    'navbar.logo_dark',
+                    'navbar.logo_light',
+                    'navbar.menu_items.title_link',
+                    'navbar.menu_items.title_type',
+                    'navbar.menu_items.is_active',
+                    'navbar.signin_link',
+                    'navbar.signup_link'
+                ])
+                ->schema([
+                    Group::make()
+                        ->schema([
+                            Toggle::make('navbar.is_active')
+                                ->default(true)
+                                ->reactive()
+                                ->label(__('Show Navigation Section'))
+                                ->helperText(__('Show or hide the Navigation section on the landing Page.')),
+                        ]),
+
+                    // Add other translatable fields here
+                    TextInput::make('navbar.heading')
+                        ->label(__('Heading'))
+                        ->required(),
+                ]),
+        ]);
+    }
+}
+```
+
+### Known Limitations
+
+- Some minor Arabic text is still hardcoded (planned to be dynamic in future updates)
+- RTL support needs more testing and refinement, especially for responsive behavior on mobile devices
+- Language switcher is currently available for Play template only
+
 ## 👨‍💻 Developer Guide: Adding Custom Blocks
 
 To add a new custom block to the system, follow these steps:
@@ -260,6 +349,8 @@ Admin panel configuration is in `app/Providers/Filament/AdminPanelProvider.php`.
 - [codeat3/blade-devicons](https://github.com/codeat3/blade-devicons) - Icon set
 - [blade-ui-kit/blade-icons](https://github.com/blade-ui-kit/blade-icons) - Icon set
 - [blade-ui-kit/blade-heroicons](https://github.com/blade-ui-kit/blade-heroicons) - Icon set
+- [Astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) - Laravel translation package
+- [happenv-com/filament-translatable](https://github.com/happenv-com/filament-translatable) - Filament translation form component
 
 ### Templates
 
@@ -302,6 +393,13 @@ This project is open-sourced software licensed under the [MIT license](LICENSE).
 For support, please open an issue on GitHub or contact the maintainers.
 
 ## 🗺️ Roadmap
+
+### Current Known Issues
+
+- Make all hardcoded text dynamic for full translation support
+- Improve RTL mobile responsiveness
+- Test and refine RTL behavior across all components
+- Extend multi-language support to Folio template
 
 ### v1.1
 

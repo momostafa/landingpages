@@ -2,14 +2,14 @@
 
 namespace App\Filament\Resources\PageResource\Pages;
 
-//use Filament\Pages\Actions;
-use Filament\Actions\EditAction;
+// use Filament\Pages\Actions;
+use App\Filament\Resources\PageResource;
 use Filament\Actions\Action;
-//use Filament\Pages\Actions\Action;
+// use Filament\Pages\Actions\Action;
+use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as PageContract;
-use App\Filament\Resources\PageResource;
 
 class ViewPage extends ViewRecord
 {

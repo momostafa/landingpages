@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
 use Z3d0X\FilamentFabricator\Models\Concerns\HandlesPageUrls;
 use Z3d0X\FilamentFabricator\Models\Contracts\Page as Contract;
-use Z3d0X\FilamentFabricator\Facades\FilamentFabricator;
-use App\Models\User;
-use App\Models\Email;
 
 class Page extends Model implements Contract
 {
@@ -20,7 +18,6 @@ class Page extends Model implements Contract
     /**
      * Create a new model instance.
      *
-     * @param  array  $attributes
      * @return void
      */
     public function __construct(array $attributes = [])
@@ -48,49 +45,46 @@ class Page extends Model implements Contract
         'sidebar_preview' => 'boolean',
     ];
 
-    
     /**
      * Get the blocks for a page
-     * 
-     * @param Int $page_id
-     * @param array | null $arguments = ['ModelData' => FALSE, 'BlockType' => NULL, 'Layout' => NULL, 'Page' => NULL, 'Content' => NULL, 'Meta' => NULL,  'Contact' => NULL, 'Footer' => NULL, 'Navbar' => NULL, 'All' => NULL,]
-     * 
+     *
+     * @param  array | null  $arguments  = ['ModelData' => FALSE, 'BlockType' => NULL, 'Layout' => NULL, 'Page' => NULL, 'Content' => NULL, 'Meta' => NULL,  'Contact' => NULL, 'Footer' => NULL, 'Navbar' => NULL, 'All' => NULL,]
      * @return array
      */
-    public static function getBlocks(Int $page_id, string $BlockType, array $exclude = [])
+    public static function getBlocks(int $page_id, string $BlockType, array $exclude = [])
     {
         $data = [];
-        
+
         $page = Page::find($page_id);
 
         $collection = collect($page->blocks);
-        
-        $keyed = $collection->mapWithKeys(function (array $item , int $key) {
-             return [$item['type'] => $item['data']];
+
+        $keyed = $collection->mapWithKeys(function (array $item, int $key) {
+            return [$item['type'] => $item['data']];
         });
-        
-            // returns all blocks
+
+        // returns all blocks
         $AllBlocks = collect($keyed->all());
 
-            // returns all block types
+        // returns all block types
         $AllBlockTypes = $AllBlocks->keys()->all();
 
-        if(!empty($exclude)){
+        if (! empty($exclude)) {
             // returns all Content Section blocks except the excluded blocks
             $ContentBlocks = $AllBlocks->except($exclude)->all();
         }
 
         // returns only active page blocks
-        if($BlockType == 'active_blocks'){
+        if ($BlockType == 'active_blocks') {
             $data = $AllBlocks->where('*.is_active', true)->all();
             // dd($activePageBlocks);
         }
 
-        if(!empty($BlockType) && $BlockType != 'active_blocks'){
+        if (! empty($BlockType) && $BlockType != 'active_blocks') {
             $data = $AllBlocks->only($BlockType);
         }
-        
-        if(!empty($ContentBlocks)){
+
+        if (! empty($ContentBlocks)) {
             $data = $ContentBlocks;
         }
 
@@ -112,7 +106,7 @@ class Page extends Model implements Contract
     {
         return FilamentFabricator::getLayouts();
     }
-    
+
     public function parent(): BelongsTo
     {
         return $this->belongsTo(static::class, 'parent_id');

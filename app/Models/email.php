@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Email extends Model
 {
@@ -22,6 +23,16 @@ class Email extends Model
         'auto_responder_sent',
         'status',
     ];
+
+    public function page(): BelongsTo
+    {
+        return $this->belongsTo(Page::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected $casts = [
         'auto_responder_sent' => 'boolean',

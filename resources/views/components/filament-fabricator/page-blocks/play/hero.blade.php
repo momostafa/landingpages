@@ -1,5 +1,30 @@
 @aware(['page'])
 @props(['hero'])
+@php
+    use Illuminate\Support\Str;
+
+    // 1. Determine target suffix (e.g., ":ar" or ":en")
+    $currentLang = request()->query('lang') === 'ar' ? 'ar' : 'en';
+    $suffix = ":{$currentLang}";
+
+    // 2. Build the "Normalized" navbar array
+    $hero = collect($hero)->mapWithKeys(function ($value, $key) use ($suffix) {
+        // If the key ends with our target language (e.g., "signin_text:ar")
+        if (Str::endsWith($key, $suffix)) {
+            // Return the stripped key (e.g., "signin_text") with the current value
+            return [Str::before($key, ':') => $value];
+        }
+
+        // If it's a key that doesn't have a language suffix at all (e.g., "logo_dark")
+        // OR if it's a suffix for the OTHER language, we only keep it if it has no suffix.
+        if (!Str::contains($key, ':')) {
+            return [$key => $value];
+        }
+
+        // Otherwise, ignore keys belonging to the other language
+        return [];
+    })->toArray();
+@endphp
 @if($hero['is_active'])
 {{-- <!-- Hero Section Start --> --}}
 <div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]">
@@ -35,9 +60,9 @@
                           @foreach($hero['items'] as $item)
 
                             <a href="{{ $item['title_link'] }}" class="duration-300 ease-in-out text-white/60 hover:text-white" target="_blank">
-                            
+
                               <x-icon name="{{ $item['icon'] }}" class="text-white-200" style="height: 40px;"/>
-                            
+
                             </a>
                           @endforeach
 

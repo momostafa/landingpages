@@ -1,11 +1,9 @@
 @props(['page'])
 @php
-
 use App\Models\Page as PageModel;
-
 @endphp
 <!DOCTYPE html>
-<html lang="en" class="light scroll-smooth" dir="ltr">
+<html lang="en" scroll-smooth">
     <head>
         @php
             $type = "play.meta";
@@ -27,15 +25,32 @@ use App\Models\Page as PageModel;
         <link rel="stylesheet" href="{{ asset('templates/play/assets/css/swiper-bundle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('templates/play/assets/css/animate.css') }}">
         <link rel="stylesheet" href="{{ asset('templates/play/assets/css/tailwind.css') }}">
-    </head>
-    
+
+        <script>
+            // Quick check to set button styles immediately based on URL or LocalStorage
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || localStorage.getItem("preferredLang") || "en";
+
+            if (lang === 'ar') {
+                document.getElementById("langSwitcherAr").classList.add("bg-white", "text-dark");
+                document.getElementById("langSwitcherEn").classList.remove("bg-white", "text-dark");
+            } else {
+                document.getElementById("langSwitcherEn").classList.add("bg-white", "text-dark");
+                document.getElementById("langSwitcherAr").classList.remove("bg-white", "text-dark");
+            }
+        </script>
+
+        <script src="{{ asset('templates/play/assets/js/wow.min.js') }}"></script>
+        <script>
+            new WOW().init();
+        </script>
+</head>
+
     <body class="font-rubik text-base text-slate-900 dark:text-white dark:bg-slate-900">
-    
-        
 
         @section('title', 'Index Page')
         <!-- Main Content -->
-        <div class="content">                
+        <div class="content">
 
 {{-- <!-- Navbar Start --> --}}
 @php
@@ -75,35 +90,9 @@ if($blockData->count() > 0){
     @endisset
 @endforeach
 
-{{-- <x-filament-fabricator::page-blocks :blocks="$blocksData" /> --}}
 
+{{-- <!-- NONE FIXED POSITION SECTIONS HERE --> --}}
 
-{{-- <!-- Hero Start -->
-<!-- Hero End -->
-
-<!-- About Start -->
-<!-- About End -->
-
-<!-- Features Start -->
-<!-- Features End -->
-
-<!-- Portfolio Start -->
-<!-- Portfolio End -->
-
-<!-- CTA Start -->
-<!-- CTA End -->
-
-<!-- Testimonial Start -->
-<!-- Testimonial End -->
-
-<!-- Pricing Start -->
-<!-- Pricing End -->
-
-<!-- Team Start -->
-<!-- Team End -->
-
-<!-- Blog Start -->
-<!-- Blog End -->--}}
 
 {{-- <!-- Contact Start --> --}}
         @php
@@ -152,7 +141,7 @@ if($blockData->count() > 0){
         <!-- Back to top -->
 
         <!-- Switcher -->
-        <div class="fixed top-1/4 -right-2 z-3">
+        {{-- <div class="fixed top-1/4 -right-2 z-3">
             <span class="relative inline-block rotate-90">
                 <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
                 <label class="label bg-slate-900 dark:bg-white shadow-sm dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
@@ -161,17 +150,8 @@ if($blockData->count() > 0){
                     <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] size-7"></span>
                 </label>
             </span>
-        </div>
-        <!-- Switcher -->
-
-        <!-- LTR & RTL Mode Code -->
-        {{-- <div class="fixed top-1/3 -right-3 z-50">
-            <a href="" id="switchRtl">
-                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-md dark:shadow-sm dark:shadow-gray-800 font-semibold rtl:block ltr:hidden">LTR</span>
-                <span class="py-1 px-3 relative inline-block rounded-t-md -rotate-90 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-md dark:shadow-sm dark:shadow-gray-800 font-semibold ltr:block rtl:hidden">RTL</span>
-            </a>
         </div> --}}
-        <!-- LTR & RTL Mode Code -->
+        <!-- Switcher -->
 
         <!-- ====== Back To Top Start -->
     <a
@@ -185,10 +165,11 @@ if($blockData->count() > 0){
     <!-- ====== Back To Top End -->
 
         <!-- JAVASCRIPTS -->
-        <script src="{{ asset('templates/play/assets/js/wow.min.js') }}"></script>
+        <script src="{{ asset('templates/play/assets/js/translations.js') }}"></script>
+        {{-- <script src="{{ asset('templates/play/assets/js/wow.min.js') }}"></script>
         <script>
             new WOW().init();
-        </script>
+        </script> --}}
         <script src="{{ asset('templates/play/assets/js/main.js') }}"></script>
         <script src="{{ asset('templates/play/assets/js/swiper-bundle.min.js') }}"></script>
         <!-- JAVASCRIPTS -->

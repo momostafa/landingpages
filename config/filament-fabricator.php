@@ -1,5 +1,8 @@
 <?php
 
+use App\Filament\Resources\PageResource;
+use App\Models\Page;
+
 // config for Z3d0X/FilamentFabricator
 return [
     'routing' => [
@@ -27,9 +30,9 @@ return [
         'web',
     ],
 
-    'page-model' => \App\Models\Page::class, //\Z3d0X\FilamentFabricator\Models\Page::class,
+    'page-model' => Page::class, // \Z3d0X\FilamentFabricator\Models\Page::class,
 
-    'page-resource' => \App\Filament\Resources\PageResource::class, //\Z3d0X\FilamentFabricator\Resources\PageResource::class,
+    'page-resource' => PageResource::class, // \Z3d0X\FilamentFabricator\Resources\PageResource::class,
 
     'enable-view-page' => false,
 

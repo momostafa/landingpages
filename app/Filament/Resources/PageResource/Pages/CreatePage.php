@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\PageResource\Pages;
 
+use App\Filament\Resources\PageResource;
 use App\Filament\Resources\PageResource\Pages\Concerns\HasPreviewModal;
 use Filament\Resources\Pages\CreateRecord;
 use Pboivin\FilamentPeek\Pages\Actions\PreviewAction;
-use App\Filament\Resources\PageResource;
 
 class CreatePage extends CreateRecord
 {

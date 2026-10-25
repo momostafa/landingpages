@@ -1,7 +1,30 @@
 @aware(['page', 'blocks' => []])
 @props(['features' => null])
 @php
-    $features = $features ?? [];
+    use Illuminate\Support\Str;
+
+    // 1. Determine target suffix (e.g., ":ar" or ":en")
+    $currentLang = request()->query('lang') === 'ar' ? 'ar' : 'en';
+    $suffix = ":{$currentLang}";
+
+    // 2. Build the "Normalized" features array
+    $features = collect($features)->mapWithKeys(function ($value, $key) use ($suffix) {
+        // If the key ends with our target language (e.g., "signin_text:ar")
+        if (Str::endsWith($key, $suffix)) {
+            // Return the stripped key (e.g., "signin_text") with the current value
+            return [Str::before($key, ':') => $value];
+        }
+
+        // If it's a key that doesn't have a language suffix at all (e.g., "logo_dark")
+        // OR if it's a suffix for the OTHER language, we only keep it if it has no suffix.
+        if (!Str::contains($key, ':')) {
+            return [$key => $value];
+        }
+
+        // Otherwise, ignore keys belonging to the other language
+        return [];
+    })->toArray();
+
 @endphp
 @if($features['is_active'] ?? false)
     <!-- ====== Features Section Start -->

@@ -1,7 +1,7 @@
-name: CI/CD & Initial Release
+name: "CI/CD & Initial Release"
 
 on:
-pushed:
+  push:
     branches: [ "main" ]
     tags: [ "v*" ]
   pull_request:
@@ -16,7 +16,7 @@ jobs:
       matrix:
         php: [ "8.4" ]
 
-    name: PHP ${{ matrix.php }} - Build & Test
+    name: "PHP ${{ matrix.php }} - Build & Test"
 
     steps:
       - name: Checkout code
