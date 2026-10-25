@@ -48,10 +48,12 @@ jobs:
         run: |
           cp .env.example .env
           touch database/database.sqlite
-          php artisan key:generate
 
       - name: Install Composer Dependencies
         run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Generate Application Key
+        run: php artisan key:generate
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -88,10 +90,12 @@ jobs:
         run: |
           cp .env.example .env
           touch database/database.sqlite
-          php artisan key:generate
 
       - name: Install Dependencies
         run: composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+      - name: Generate Application Key
+        run: php artisan key:generate
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
