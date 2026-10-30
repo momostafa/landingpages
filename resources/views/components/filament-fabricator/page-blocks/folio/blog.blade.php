@@ -1,9 +1,7 @@
 @aware(['page'])
-@props(['blog'])
-@php
-//
-@endphp
-@if($blog['is_active'])
+@props(['blog' => null])
+
+@if($blog['is_active'] ?? false)
 <!--  BLOG Section Start -->
 <section id="blog" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
   <div class="max-w-6xl mx-auto px-6">

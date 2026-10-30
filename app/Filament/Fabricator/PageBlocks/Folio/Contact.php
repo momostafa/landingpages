@@ -227,7 +227,6 @@ class Contact extends PageBlock
             'vk' => ['name' => 'VK', 'type' => 'url', 'icon' => 'uni-vk-o', 'label' => 'VK', 'placeholder' => 'https://www.vk.com/yourpage'],
             'twitch' => ['name' => 'Twitch', 'type' => 'url', 'icon' => 'uni-twitch-o', 'label' => 'Twitch', 'placeholder' => 'https://www.twitch.com/yourpage'],
             'discord' => ['name' => 'Discord', 'type' => 'url', 'icon' => 'uni-discord-o', 'label' => 'Discord', 'placeholder' => 'https://www.discord.com/yourpage'],
-            'telegram' => ['name' => 'Telegram', 'type' => 'url', 'icon' => 'uni-telegram-o', 'label' => 'Telegram', 'placeholder' => 'https://www.telegram.com/yourpage'],
             'skype' => ['name' => 'Skype', 'type' => 'url', 'icon' => 'uni-skype-o', 'label' => 'Skype', 'placeholder' => 'https://www.skype.com/yourpage'],
             'line' => ['name' => 'Line', 'type' => 'url', 'icon' => 'uni-line-o', 'label' => 'Line', 'placeholder' => 'https://www.line.com/yourpage'],
             'slack' => ['name' => 'Slack', 'type' => 'url', 'icon' => 'uni-slack-o', 'label' => 'Slack', 'placeholder' => 'https://www.slack.com/yourpage'],

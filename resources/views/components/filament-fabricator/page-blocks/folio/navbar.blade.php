@@ -1,10 +1,7 @@
 @aware(['page'])
-@props(['navmain'])
-@php
-$menu_items = collect($navmain['menu_items']);
-$menu_items = $menu_items->sortBy('nav_number')->all();
-@endphp
-@if($navmain['is_active'])
+@props(['navbar' => null])
+
+@if($navbar['is_active'] ?? false)
 
 <!-- Nav/Navigation Start -->
 <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
@@ -12,16 +9,18 @@ $menu_items = $menu_items->sortBy('nav_number')->all();
   <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
 
     <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
-      <span class="text-zinc-900 dark:text-white">eli</span><span class="text-accent">ott</span>
+      <span class="text-zinc-900 dark:text-white">{{ $navbar['logo_text'] ?? 'eli' }}</span><span class="text-accent">{{ $navbar['logo_text1'] ?? 'ott' }}</span>
     </a>
 
     <ul class="hidden md:flex items-center gap-8 text-sm" role="list">
-      <li><a href="#services" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='services'?'on !text-zinc-900 dark:!text-white':''">Services</a></li>
-      <li><a href="#portfolio" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='portfolio'?'on !text-zinc-900 dark:!text-white':''">Portfolio</a></li>
+        @foreach ($navbar['menu_items'] as $item)
+          <li><a href="{{ $item['title_link'] }}" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='{{ $item['title'] }}'?'on !text-zinc-900 dark:!text-white':''">{{ $item['title'] }}</a></li>
+        @endforeach
+      {{-- <li><a href="#portfolio" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='portfolio'?'on !text-zinc-900 dark:!text-white':''">Portfolio</a></li>
       <li><a href="#about"   class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='about'?'on !text-zinc-900 dark:!text-white':''">About</a></li>
       <li><a href="#testimonial" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='testimonial'?'on !text-zinc-900 dark:!text-white':''">Testimonials</a></li>
       <li><a href="#blog"    class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='blog'?'on !text-zinc-900 dark:!text-white':''">Blog</a></li>
-      <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li>
+      <li><a href="#contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors" :class="s==='contact'?'on !text-zinc-900 dark:!text-white':''">Contact</a></li> --}}
     </ul>
 
     <div class="flex items-center gap-3">

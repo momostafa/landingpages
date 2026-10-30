@@ -19,7 +19,7 @@
     @foreach ($portfolio['items'] as $item)
       <article class="card-h reveal d1 group rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent md:row-span-2">
         <div class="pf w-full h-64 md:h-80">
-          <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" loading="lazy">
+          <img src="{{ asset($item['image']) }}" alt="{{ $item['title'] }}" loading="lazy">
         </div>
         <div class="p-7">
           <div class="flex flex-wrap gap-2 mb-4">

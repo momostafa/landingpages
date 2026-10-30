@@ -1,9 +1,9 @@
 @aware(['page'])
-@props(['about'])
+@props(['about' => null])
 @php
 // dd($about);
 @endphp
-@if($about['is_active'])
+@if($about['is_active'] ?? false)
 <!-- About Me Section Start -->
 <section id="about" class="py-24 bg-zinc-50 dark:bg-zinc-900/40">
   <div class="max-w-6xl mx-auto px-6">
@@ -11,7 +11,7 @@
 
       <div class="reveal order-2 md:order-1">
         <div class="pf w-full aspect-square max-w-sm mx-auto rounded-3xl">
-          <img src="{{ $about['image']}}" alt="{{ $about['section_name']}}" loading="lazy">
+          <img src="{{ asset($about['image']) }}" alt="{{ $about['section_name']}}" loading="lazy">
         </div>
       </div>
 

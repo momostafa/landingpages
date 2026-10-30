@@ -1,8 +1,8 @@
 @aware(['page'])
 
-@props(['contact'])
+@props(['contact' => null])
 
-@if($contact['is_active'])
+@if($contact['is_active'] ?? false)
 
 <!-- CONTACT Section START -->
 <section id="contact" class="py-24">
