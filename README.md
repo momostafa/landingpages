@@ -5,9 +5,6 @@ Dynamic landing page builder with Filament Fabricator - SaaS-ready starter kit
 [![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![Filament](https://img.shields.io/badge/Filament-4.x-orange.svg)](https://filamentphp.com)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/momostafa/landingpages?style=social)](https://github.com/momostafa/landingpages/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/momostafa/landingpages?style=social)](https://github.com/momostafa/landingpages/network/members)
-[![GitHub Downloads](https://img.shields.io/github/downloads/momostafa/landingpages/total?label=Downloads)](https://github.com/momostafa/landingpages/releases)
 
 ## LandingPages Visual Showcase
 
