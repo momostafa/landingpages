@@ -55,15 +55,23 @@ A curated visual overview of the LandingPages project. The repository includes f
   </tr>
 </table>
 
+<table style="border: none;">
+  <tr style="border: none;">
+    <td align="center" style="padding: 0;"><b>Page Editor (Ai Content Generation)</b></td>
+    <td align="center" style="padding: 0;"><b>Prompt Editor (Prompt Builder)</b></td>
+  </tr>
+  <tr style="border: none;">
+    <td><img src="showcase/ai-content-generation.png" alt="Page Editor (Ai Content Generation)" width="100%"/></td>
+    <td><img src="showcase/prompt-builder.png" alt="Prompt Editor (Prompt Builder)" width="100%"/></td>
+  </tr>
+</table>
+
 ## 🆕 New Features
 
 ### [![GitHub Release](https://img.shields.io/github/v/release/momostafa/landingpages)](https://github.com/momostafa/landingpages/releases/latest)
 
-
-- **RTL Support**: Play template now supports Right-to-Left languages with Arabic sample content
-- **Multi-Language**: Built-in language switcher and translation support for page blocks
-- **Email Management**: Dedicated Filament Resource to view contact form submissions
-- **Translation Packages**: Integrated laravel-translatable and filament-translatable
+- **AI Content Generation**: Advanced AI integration allowing users to generate, preview, and apply multiple content variants directly within the builder.
+- **Prompt Builder**: A dynamic workspace for composing reusable prompt templates with TipTap JSON-based rich text formatting and string interpolation.
 
 ## ⚠️ Important Notes
 
@@ -101,6 +109,43 @@ The Page model includes a `user_id` field, making the application SaaS-ready fro
 - **Livewire Integration** - Fast, reactive UI components
 - **Tailwind CSS 4** - Utility-first CSS framework for rapid styling
 - **SQLite by Default** - Quick setup with included demo database
+- **AI Content Generation**: Generate high-quality content variants using LLMs. Select your favorite variant and apply it instantly to the page block without losing other field data (e.g., images, headings).
+
+## 🤖 AI Content Generation Overview
+
+The module provides a seamless workflow for generating and applying AI-powered content:
+
+1. **Prompt Builder**: Compose dynamic prompt templates with TipTap JSON-based rich text formatting and string interpolation.
+2. **Variant Generation**: Generate multiple high-quality rewrite variants using the Laravel AI SDK.
+3. **Interactive Selection**: Use `ToggleButtons` to preview different options side-by-side.
+4. **Seamless Application**: Apply a selected variant directly to a nested Builder block field (e.g., `about.description`) while preserving all other data in that block.
+
+## 🛠️ Integrating AI Content Generation
+
+You can easily attach the AI generation workflow to any form component (Textarea, RichEditor, etc.) using the `hintAction` method. This allows users to trigger the variant generation and selection modal directly from a specific field.
+
+### Implementation Example
+
+To use it, simply chain the `hintAction` method to your field definition. You must provide the `blockType` (to identify which block in the Builder is being targeted) and the `fieldPath` (the dot-notation path to the specific data key).
+
+```php
+Textarea::make('about.description')
+    ->label('Description 1')
+    ->default("I'm Eliott, a freelance designer and frontend developer based in Paris...")
+    ->rows(4)
+    ->hintAction(
+        ContentAction::make('ai_content')
+            ->blockType('folio.about')      // Matches the "type" key in your JSON blocks
+            ->fieldPath('about.description') // The nested key inside the "data" object
+    )
+    ->live()
+    ->columnSpanFull(),
+```
+
+### Key Parameters:
+- **`blockType`**: This must match the `type` value of the block in your JSON structure (e.g., `folio.about`).
+- **`fieldPath`**: The specific key inside the block's `data` object where the AI content should be saved (e.g., `about.description`).
+- **`live()`**: It is recommended to keep the field reactive so that the UI updates immediately once a variant is accepted.
 
 ## 📦 Templates
 
@@ -141,7 +186,15 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-### 4. Database Setup
+### 4. AI SDK Configuration (Required)
+
+Before running migrations, you must publish the Laravel AI SDK configuration and migration files:
+
+```bash
+php artisan vendor:publish --provider="Laravel\Ai\AiServiceProvider"
+```
+
+### 5. Database Setup
 
 The project uses SQLite by default. Create the database file:
 
@@ -152,13 +205,13 @@ php artisan migrate
 
 **Note**: A MySQL database dump is available in `database/landing_pages.sql` if you prefer to use MySQL instead of SQLite. To use MySQL, update your `.env` file with your MySQL credentials and import the SQL file.
 
-### 5. Build Assets
+### 6. Build Assets
 
 ```bash
 npm run build
 ```
 
-### 6. Start Development Server
+### 7. Start Development Server
 
 ```bash
 php artisan serve
@@ -327,28 +380,26 @@ Admin panel configuration is in `app/Providers/Filament/AdminPanelProvider.php`.
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Laravel 12
-- **Admin Panel**: Filament 4
-- **Page Builder**: Filament Fabricator 2.6
-- **Frontend**: Livewire 3, Alpine.js
-- **Styling**: Tailwind CSS 4
-- **Testing**: Pest 3
-- **Database**: SQLite (default), MySQL, PostgreSQL
+- **Framework**: Laravel 12
+- **Admin Panel / UI**: Filament 4 (Custom Actions, Modal Schemas, Grid Layouts)
+- **Editor Backend**: TipTap JSON storage with native Filament `RichEditor` and `RichContentRenderer`
+- **Text Processing Pipeline**: Laravel Fluent `Str` and `Collection` string processing helpers
+- **AI Integration**: Laravel AI SDK for structured content generation
 
 ## 📝 Credits
 
 ### Packages Used
 
-- [mokhosh/filament-rating](https://github.com/mokhosh/filament-rating) - Rating component
 - [z3d0x/filament-fabricator](https://github.com/z3d0x/filament-fabricator) - Page builder framework
+- [Astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) - Laravel translation package
+- [happenv-com/filament-translatable](https://github.com/happenv-com/filament-translatable) - Filament translation form component
+- [mokhosh/filament-rating](https://github.com/mokhosh/filament-rating) - Rating component
 - [guava/filament-icon-picker](https://github.com/guava-labs/filament-icon-picker) - Icon picker
 - [codeat3/blade-unicons](https://github.com/codeat3/blade-unicons) - Icon set
 - [codeat3/blade-google-material-design-icons](https://github.com/codeat3/blade-google-material-design-icons) - Icon set
 - [codeat3/blade-devicons](https://github.com/codeat3/blade-devicons) - Icon set
 - [blade-ui-kit/blade-icons](https://github.com/blade-ui-kit/blade-icons) - Icon set
 - [blade-ui-kit/blade-heroicons](https://github.com/blade-ui-kit/blade-heroicons) - Icon set
-- [Astrotomic/laravel-translatable](https://github.com/Astrotomic/laravel-translatable) - Laravel translation package
-- [happenv-com/filament-translatable](https://github.com/happenv-com/filament-translatable) - Filament translation form component
 
 ### Templates
 

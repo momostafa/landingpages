@@ -2,6 +2,7 @@
 
 namespace App\Filament\Fabricator\PageBlocks\Folio;
 
+use App\Filament\Actions\ContentAction;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
@@ -69,6 +70,16 @@ class About extends PageBlock
                                             ->label('Description 1')
                                             ->default("I'm Eliott, a freelance designer and frontend developer based in Paris with 5 years of experience shipping digital products for startups, agencies, and scale-ups across Europe. I thrive at the intersection of great design and clean code.")
                                             ->rows(4)
+                                            ->hintAction(function () {
+                                                try {
+                                                    return ContentAction::make('ai_content')
+                                                        ->blockType('folio.about')
+                                                        ->fieldPath('about.description');
+                                                } catch (\Exception $e) {
+                                                    return null;
+                                                }
+                                            })
+                                            ->live()
                                             ->columnSpanFull()
                                             ->required(),
 
